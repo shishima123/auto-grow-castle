@@ -226,7 +226,7 @@ EndFunc   ;==>check_toa_do_cua_so
 
 Func thoat()
 	Exit
-	Sleep(10)
+Sleep(10)
 EndFunc   ;==>thoat
 
 

@@ -37,6 +37,7 @@ WEnd
 
 Func di_ai()
 	While 1
+		Start_KoPlayer()
 		check_toa_do_cua_so()
 		Sleep(1000)
 		$b = check_home()
@@ -60,6 +61,7 @@ EndFunc   ;==>di_ai
 
 Func click_quang_cao()
 	While 1
+				Start_KoPlayer()
 		check_toa_do_cua_so()
 		$b = check_home()
 		Sleep(1000)
@@ -89,10 +91,12 @@ EndFunc   ;==>click_quang_cao
 
 
 Func Start_KoPlayer()
-	;viet lenh kiem tra xem koplayer da chay chua
+	$hWnd=WinExists("KOPLAYER 1.4.1055")
+	if $hWnd<>1 Then
 	ShellExecute("D:\KOPLAYER\Lancher.exe", @SW_MAXIMIZE)
-	ConsoleWrite("Doi 10s" & @CRLF)
-	;sleep(10000)
+	ConsoleWrite("Doi 15s de khoi dong Koplayer" & @CRLF)
+	Sleep(15000)
+	Else
 EndFunc   ;==>Start_KoPlayer
 
 Func Start_game()

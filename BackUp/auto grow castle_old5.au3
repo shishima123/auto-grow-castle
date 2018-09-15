@@ -37,6 +37,7 @@ WEnd
 
 Func di_ai()
 	While 1
+		Start_KoPlayer()
 		check_toa_do_cua_so()
 		Sleep(1000)
 		$b = check_home()
@@ -60,6 +61,7 @@ EndFunc   ;==>di_ai
 
 Func click_quang_cao()
 	While 1
+		Start_KoPlayer()
 		check_toa_do_cua_so()
 		$b = check_home()
 		Sleep(1000)
@@ -89,10 +91,12 @@ EndFunc   ;==>click_quang_cao
 
 
 Func Start_KoPlayer()
-	;viet lenh kiem tra xem koplayer da chay chua
-	ShellExecute("D:\KOPLAYER\Lancher.exe", @SW_MAXIMIZE)
-	ConsoleWrite("Doi 10s" & @CRLF)
-	;sleep(10000)
+	$hWnd = WinExists("KOPLAYER 1.4.1055")
+	If $hWnd <> 1 Then
+		ShellExecute("D:\KOPLAYER\Lancher.exe", @SW_MAXIMIZE)
+		ConsoleWrite("Doi 15s de khoi dong Koplayer" & @CRLF)
+		Sleep(15000)
+	EndIf
 EndFunc   ;==>Start_KoPlayer
 
 Func Start_game()
@@ -193,12 +197,13 @@ Func close_ads() ;close ads
 		If $search5 = 1 Then
 			ConsoleWrite("close ads" & @CRLF)
 			ControlClick("KOPLAYER 1.4.1055", 0, 0, "left", 1, $x, $y)
-			;Else
-			;ConsoleWrite("ko tim thay ads"&@CRLF)
-			;Sleep(5000)
-			;ControlClick("KOPLAYER 1.4.1055",0,0,"left",1,991, 75)
+			Sleep(1000)
+		Else
+			$search5 = _ImageSearchArea("ads2.bmp", 1, 915, 28, 1040, 137, $x, $y, 0)
+			ConsoleWrite("kiem tra ads 2"&@CRLF)
+			ControlClick("KOPLAYER 1.4.1055",0,0,"left",1,$x, $y)
 		EndIf
-		Sleep(10)
+		Sleep(1000)
 	Until $search5 = 1
 EndFunc   ;==>close_ads
 
@@ -228,6 +233,7 @@ Func thoat()
 	Exit
 	Sleep(10)
 EndFunc   ;==>thoat
+
 
 
 
