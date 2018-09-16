@@ -78,10 +78,10 @@ Func click_quang_cao()
 			If $checkads = 1 Then
 				close_ads()
 				Sleep(1000)
-				_GUICtrlStatusBar_SetText($status, "Khởi động lại game")
 				ControlSend("KOPLAYER 1.4.1055", 0, 0, "{ESC}")
 				Sleep(2000)
 				ControlClick("KOPLAYER 1.4.1055", 0, 0, "left", 1, 386, 513 + 15)
+				_GUICtrlStatusBar_SetText($status, "Khởi động lại game")
 			EndIf
 		Else
 			Start_game()
@@ -192,7 +192,7 @@ EndFunc   ;==>click_ads
 
 Func close_ads() ;close ads
 	Local $x = 0, $y = 0
-	Local $i = 0
+	local $i=0
 	Do
 		$search5 = _ImageSearchArea(@ScriptDir & "\closeads.bmp", 1, 892, 42, 1029, 140, $x, $y, 0)
 		If $search5 = 1 Then
@@ -203,48 +203,46 @@ Func close_ads() ;close ads
 		Else
 			;$search5 = _ImageSearchArea(@ScriptDir & "\ads2.bmp", 1, 915, 28, 1040, 137, $x, $y, 0)
 			;If $search5 = 1 Then
-			;ConsoleWrite("kiem tra ads 2" & @CRLF)
-			;ControlClick("KOPLAYER 1.4.1055", 0, 0, "left", 1, $x, $y)
-			;_GUICtrlStatusBar_SetText($status, "Đã tắt quảng cáo")
+				;ConsoleWrite("kiem tra ads 2" & @CRLF)
+				;ControlClick("KOPLAYER 1.4.1055", 0, 0, "left", 1, $x, $y)
+				;_GUICtrlStatusBar_SetText($status, "Đã tắt quảng cáo")
 			;EndIf
-			$i = $i + 1
-			If $i = 35 Then
-				ControlClick("KOPLAYER 1.4.1055", 0, 0, "left", 1, 1009, 77) ;chinh lai toa do o day
+			$i=$i+1
+			if $i=35 Then
+				ControlClick("KOPLAYER 1.4.1055", 0, 0, "left", 1, 1009, 77);chinh lai toa do o day
 				_GUICtrlStatusBar_SetText($status, "Đã tắt quảng cáo")
-				EndIf
-			EndIf
-			Sleep(1000)
-		Until $search5 = 1
-	EndFunc   ;==>close_ads
-
-	Func Speed()
-		Local $x = 0, $y = 0
-		$search6 = _ImageSearchArea(@ScriptDir & "\speed.bmp", 1, 10, 596, 77, 633, $x, $y, 0)
-		If $search6 = 1 Then
-			ConsoleWrite("speed x1,chuyen qua x2" & @CRLF)
-			ControlClick("KOPLAYER 1.4.1055", 0, 0, "left", 1, 50, 553 + 20)
 		EndIf
-		Sleep(10)
-	EndFunc   ;==>Speed
+		Sleep(1000)
+	Until $search5 = 1
+EndFunc   ;==>close_ads
 
-	Func check_toa_do_cua_so()
-		Local $aPos = WinGetPos("KOPLAYER 1.4.1055")
-		If $aPos[0] <> 0 And $aPos[1] <> 0 Then
-			ConsoleWrite("vi tri cua so ko dung" & @CRLF)
-			WinMove("KOPLAYER 1.4.1055", 0, 0, 0, 1088, 640)
-			_GUICtrlStatusBar_SetText($status, "Đã chỉnh lại vị trí Koplayer")
-			ConsoleWrite("da chinh lai vi tri moi" & @CRLF)
-		Else
-			ConsoleWrite("vi tri da chinh" & @CRLF)
-		EndIf
-	EndFunc   ;==>check_toa_do_cua_so
+Func Speed()
+	Local $x = 0, $y = 0
+	$search6 = _ImageSearchArea(@ScriptDir & "\speed.bmp", 1, 10, 596, 77, 633, $x, $y, 0)
+	If $search6 = 1 Then
+		ConsoleWrite("speed x1,chuyen qua x2" & @CRLF)
+		ControlClick("KOPLAYER 1.4.1055", 0, 0, "left", 1, 50, 553 + 20)
+	EndIf
+	Sleep(10)
+EndFunc   ;==>Speed
+
+Func check_toa_do_cua_so()
+	Local $aPos = WinGetPos("KOPLAYER 1.4.1055")
+	If $aPos[0] <> 0 And $aPos[1] <> 0 Then
+		ConsoleWrite("vi tri cua so ko dung" & @CRLF)
+		WinMove("KOPLAYER 1.4.1055", 0, 0, 0, 1088, 640)
+		_GUICtrlStatusBar_SetText($status, "Đã chỉnh lại vị trí Koplayer")
+		ConsoleWrite("da chinh lai vi tri moi" & @CRLF)
+	Else
+		ConsoleWrite("vi tri da chinh" & @CRLF)
+	EndIf
+EndFunc   ;==>check_toa_do_cua_so
 
 
-	Func thoat()
-		Exit
-		Sleep(10)
-	EndFunc   ;==>thoat
-
+Func thoat()
+	Exit
+	Sleep(10)
+EndFunc   ;==>thoat
 
 
 
